@@ -8,12 +8,23 @@ namespace Domain.UnitTests.ValueObjects
 {
     public class HandValueObjectTests
     {
+        private readonly HandValueObject _handRockMock;
+        private readonly HandValueObject _handPaperMock;
+        private readonly HandValueObject _handScissorsMock;
+
+        public HandValueObjectTests()
+        {
+            _handRockMock = new HandValueObject(HandTypeEnum.Rock);
+            _handPaperMock = new HandValueObject(HandTypeEnum.Paper);
+            _handScissorsMock = new HandValueObject(HandTypeEnum.Scissors);
+        }
+
         [Fact]
         public void CreateHandValueObject_WithValidParameters_ShouldNotThrow()
         {
             Action action = () =>
             {
-                var hand = new HandValueObject(HandEnum.Rock);
+                var hand = new HandValueObject(HandTypeEnum.Rock);
             };
 
             action.Should()
@@ -21,7 +32,7 @@ namespace Domain.UnitTests.ValueObjects
         }
 
         [Fact]
-        public void CreateHandValueObject_WithInvalidHandEnum_ShouldThrowExactlyValidationExceptionWithSpecificMessage()
+        public void CreateHandValueObject_WithInvalidHandTypeEnum_ShouldThrowExactlyValidationExceptionWithSpecificMessage()
         {
             Action action = () =>
             {
@@ -29,19 +40,14 @@ namespace Domain.UnitTests.ValueObjects
             };
 
             action.Should()
-                .ThrowExactly<ValidationException>().WithMessage("Hand Enum is outside the possible range of values.");
+                .ThrowExactly<ValidationException>().WithMessage("Hand Type Enum is outside the possible values.");
         }
 
         [Fact]
         public void WinsMethodFromHandRockType_GivenOtherHandsScissorsType_ShouldReturnTrue()
         {
-            #region Arrange
-            var handRock = new HandValueObject(HandEnum.Rock);
-            var handScissors = new HandValueObject(HandEnum.Scissors);
-            #endregion
-
             #region Act
-            var handRockWinner = handRock.Wins(handScissors);
+            var handRockWinner = _handRockMock.Wins(_handScissorsMock);
             #endregion
 
             #region Assert
@@ -50,15 +56,10 @@ namespace Domain.UnitTests.ValueObjects
         }
 
         [Fact]
-        public void GetWinnerMethodFromHandPaperType_GivenOtherHandsRockType_ShouldReturnTrue()
+        public void WinsMethodFromHandPaperType_GivenOtherHandsRockType_ShouldReturnTrue()
         {
-            #region Arrange
-            var handPaper = new HandValueObject(HandEnum.Paper);
-            var handRock = new HandValueObject(HandEnum.Rock);
-            #endregion
-
             #region Act
-            var handPaperWinner = handPaper.Wins(handRock);
+            var handPaperWinner = _handPaperMock.Wins(_handRockMock);
             #endregion
 
             #region Assert
@@ -67,15 +68,10 @@ namespace Domain.UnitTests.ValueObjects
         }
 
         [Fact]
-        public void GetWinnerMethodFromHandScissorsType_GivenOtherHandsPaperType_ShouldReturnTrue()
+        public void WinsMethodFromHandScissorsType_GivenOtherHandsPaperType_ShouldReturnTrue()
         {
-            #region Arrange
-            var handScissors = new HandValueObject(HandEnum.Scissors);
-            var handPaper = new HandValueObject(HandEnum.Paper);
-            #endregion
-
             #region Act
-            var handScissorsWinner = handScissors.Wins(handPaper);
+            var handScissorsWinner = _handScissorsMock.Wins(_handPaperMock);
             #endregion
 
             #region Assert
@@ -84,13 +80,11 @@ namespace Domain.UnitTests.ValueObjects
         }
 
         [Fact]
-        public void GetWinnerMethodFromHandScissorsType_GivenOtherSameHand_ShouldThrowExactlyEqualsHandsExceptionWithSpecificMessage()
+        public void WinsMethodFromHandScissorsType_GivenOtherSameHand_ShouldThrowExactlyEqualsHandsExceptionWithSpecificMessage()
         {
             Action action = () =>
             {
-                var handScissors = new HandValueObject(HandEnum.Scissors);
-                var handScissorsEqual = new HandValueObject(HandEnum.Scissors);
-                handScissors.Wins(handScissorsEqual);
+                _handScissorsMock.Wins(_handScissorsMock);
             };
 
             action.Should()

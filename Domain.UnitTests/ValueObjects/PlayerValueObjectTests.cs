@@ -11,7 +11,7 @@ namespace Domain.UnitTests.ValueObjects
 
         public PlayerValueObjectTests()
         {
-            _handMock = new HandValueObject(HandEnum.Rock);
+            _handMock = new HandValueObject(HandTypeEnum.Rock);
         }
 
         [Fact]

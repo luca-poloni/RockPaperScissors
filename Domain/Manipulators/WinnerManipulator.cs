@@ -1,13 +1,13 @@
 ﻿using Domain.ValueObjects;
 
-namespace Domain.Aggregates
+namespace Domain.Manipulators
 {
-    public record WinnerAggregate
+    public record WinnerManipulator
     {
         private readonly PlayerValueObject _playerOne;
         private readonly PlayerValueObject _playerTwo;
 
-        public WinnerAggregate(PlayerValueObject playerOne, PlayerValueObject playerTwo)
+        public WinnerManipulator(PlayerValueObject playerOne, PlayerValueObject playerTwo)
         {
             _playerOne = playerOne;
             _playerTwo = playerTwo;

@@ -9,7 +9,7 @@ namespace Domain.Validations
 
         static HandValidation()
         {
-            Validator.RuleFor(x => x.Type).IsInEnum().WithMessage("Hand Enum is outside the possible range of values.");
+            Validator.RuleFor(x => x.Type).IsInEnum().WithMessage("Hand Type Enum is outside the possible values.");
         }
     }
 }

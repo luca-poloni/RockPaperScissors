@@ -7,16 +7,16 @@ namespace Domain.ValueObjects
 {
     public record HandValueObject
     {
-        private static readonly Dictionary<HandEnum, HandEnum> _disputes = new()
+        private static readonly Dictionary<HandTypeEnum, HandTypeEnum> _disputes = new()
         {
-            { HandEnum.Rock, HandEnum.Scissors },
-            { HandEnum.Paper, HandEnum.Rock },
-            { HandEnum.Scissors, HandEnum.Paper}
+            { HandTypeEnum.Rock, HandTypeEnum.Scissors },
+            { HandTypeEnum.Paper, HandTypeEnum.Rock },
+            { HandTypeEnum.Scissors, HandTypeEnum.Paper}
         };
 
-        public HandEnum Type { get; }
+        public HandTypeEnum Type { get; }
 
-        public HandValueObject(HandEnum type)
+        public HandValueObject(HandTypeEnum type)
         {
             Type = type;
 

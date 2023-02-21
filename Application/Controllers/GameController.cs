@@ -1,5 +1,5 @@
-using Application.Models;
-using Domain.Aggregates;
+using Application.Aggregates;
+using Domain.Manipulators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
@@ -9,13 +9,13 @@ namespace Application.Controllers
     public class GameController : ControllerBase
     {
         [HttpPost("play")]
-        public IActionResult Play(PlayersModel players)
+        public IActionResult Play(PlayersAggregate players)
         {
             IActionResult result;
 
             try
             {
-                var winner = new WinnerAggregate(players.PlayerOne, players.PlayerTwo);
+                var winner = new WinnerManipulator(players.PlayerOne, players.PlayerTwo);
                 result = Ok(winner.GetWinner());
             }
             catch (Exception ex)

@@ -1,13 +1,13 @@
 ﻿using Domain.ValueObjects;
 
-namespace Application.Models
+namespace Application.Aggregates
 {
-    public record PlayersModel
+    public record PlayersAggregate
     {
         public PlayerValueObject PlayerOne { get; }
         public PlayerValueObject PlayerTwo { get; }
 
-        public PlayersModel(PlayerValueObject playerOne, PlayerValueObject playerTwo)
+        public PlayersAggregate(PlayerValueObject playerOne, PlayerValueObject playerTwo)
         {
             PlayerOne = playerOne;
             PlayerTwo = playerTwo;

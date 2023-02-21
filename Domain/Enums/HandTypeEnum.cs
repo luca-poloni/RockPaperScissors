@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums
 {
-    public enum HandEnum
+    public enum HandTypeEnum
     {
         Rock = 1,
         Paper = 2,
