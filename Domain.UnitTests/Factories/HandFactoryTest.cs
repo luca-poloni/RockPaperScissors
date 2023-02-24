@@ -48,7 +48,7 @@ namespace Domain.UnitTests.Factories
         {
             Action action = () =>
             {
-                var hand = HandFactory.Create("Invalid Name");
+                var hand = HandFactory.Create("Invalid Hand Name");
             };
 
             action.Should()
