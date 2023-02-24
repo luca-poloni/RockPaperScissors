@@ -1,13 +1,16 @@
-﻿using Domain.ValueObjects;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Application.Aggregates
 {
     public record PlayersAggregate
     {
-        public PlayerValueObject PlayerOne { get; }
-        public PlayerValueObject PlayerTwo { get; }
+        [Required]
+        public PlayerAggregate PlayerOne { get; }
 
-        public PlayersAggregate(PlayerValueObject playerOne, PlayerValueObject playerTwo)
+        [Required]
+        public PlayerAggregate PlayerTwo { get; }
+
+        public PlayersAggregate(PlayerAggregate playerOne, PlayerAggregate playerTwo)
         {
             PlayerOne = playerOne;
             PlayerTwo = playerTwo;

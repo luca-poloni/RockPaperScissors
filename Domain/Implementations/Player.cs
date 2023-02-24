@@ -1,14 +1,15 @@
 ﻿using FluentValidation;
 using Domain.Validations;
+using Domain.Interfaces;
 
-namespace Domain.ValueObjects
+namespace Domain.Implementations
 {
-    public record PlayerValueObject 
+    public class Player : IPlayer
     {
         public string Name { get; }
-        public HandValueObject Hand { get; }
+        public IHand Hand { get; }
 
-        public PlayerValueObject(string name, HandValueObject hand)
+        public Player(string name, IHand hand)
         {
             Name = name;
             Hand = hand;
@@ -17,6 +18,11 @@ namespace Domain.ValueObjects
 
             if (!result.IsValid)
                 throw new ValidationException(result.ToString());
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {Name} | Hand: {Hand.GetType().Name}";
         }
     }
 }

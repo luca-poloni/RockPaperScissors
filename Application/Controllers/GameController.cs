@@ -1,5 +1,6 @@
 using Application.Aggregates;
-using Domain.Manipulators;
+using Domain.Factories;
+using Domain.Implementations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
@@ -15,8 +16,17 @@ namespace Application.Controllers
 
             try
             {
-                var winner = new WinnerManipulator(players.PlayerOne, players.PlayerTwo);
-                result = Ok(winner.GetWinner());
+                var playerAggregateOne = players.PlayerOne;
+                var playerAggregateTwo = players.PlayerTwo;
+
+                var handOne = HandFactory.Create(playerAggregateOne.HandName);
+                var handTwo = HandFactory.Create(playerAggregateTwo.HandName);
+
+                var playerOne = new Player(playerAggregateOne.Name, handOne);
+                var playerTwo = new Player(playerAggregateTwo.Name, handTwo);
+                var winner = new Winner(playerOne, playerTwo);
+
+                result = Ok(winner.GetWinner().ToString());
             }
             catch (Exception ex)
             {
