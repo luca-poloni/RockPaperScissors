@@ -4,10 +4,10 @@ namespace Application.Aggregates
 {
     public record PlayersAggregate
     {
-        [Required]
+        [Required(ErrorMessage = "PlayerOne is required.")]
         public PlayerAggregate PlayerOne { get; }
 
-        [Required]
+        [Required(ErrorMessage = "PlayerTwo is required.")]
         public PlayerAggregate PlayerTwo { get; }
 
         public PlayersAggregate(PlayerAggregate playerOne, PlayerAggregate playerTwo)

@@ -4,14 +4,14 @@ namespace Application.Aggregates
 {
     public class PlayerAggregate
     {
-        [Required]
-        [MinLength(3)]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Name is required.")]
+        [MinLength(3, ErrorMessage = "Minimum Length for Name is 3 characters.")]
+        [MaxLength(100, ErrorMessage = "Maximum Length for Name is 100 characters.")]
         public string Name { get; }
 
-        [Required]
-        [MinLength(4)]
-        [MaxLength(8)]
+        [Required(ErrorMessage = "Hand Name is required.")]
+        [MinLength(4, ErrorMessage = "Minimum Length for Hand Name is 4 characters.")]
+        [MaxLength(8, ErrorMessage = "Maximum Length for Hand Name is 8 characters.")]
         public string HandName { get; }
 
         public PlayerAggregate(string name, string handName)
