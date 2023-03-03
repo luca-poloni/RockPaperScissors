@@ -1,6 +1,5 @@
 using Application.Aggregates;
 using Domain.Factories;
-using Domain.Implementations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.Controllers
@@ -22,9 +21,9 @@ namespace Application.Controllers
                 var handOne = HandFactory.Create(playerAggregateOne.HandName);
                 var handTwo = HandFactory.Create(playerAggregateTwo.HandName);
 
-                var playerOne = new PlayerUseCase(playerAggregateOne.Name, handOne);
-                var playerTwo = new PlayerUseCase(playerAggregateTwo.Name, handTwo);
-                var winner = new WinnerUseCase(playerOne, playerTwo);
+                var playerOne = PlayerFactory.Create(playerAggregateOne.Name, handOne);
+                var playerTwo = PlayerFactory.Create(playerAggregateTwo.Name, handTwo);
+                var winner = WinnerFactory.Create(playerOne, playerTwo);
 
                 result = Ok(winner.GetWinner().ToString());
             }

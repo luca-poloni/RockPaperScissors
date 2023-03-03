@@ -1,4 +1,5 @@
-﻿using Domain.Implementations;
+﻿using Domain.Factories;
+using Domain.Interfaces;
 using FluentAssertions;
 using FluentValidation;
 
@@ -6,11 +7,11 @@ namespace Domain.UnitTests.Implementations
 {
     public sealed class PlayerTest
     {
-        private readonly RockUseCase _handRockMock;
+        private readonly IHand _handRockMock;
 
         public PlayerTest()
         {
-            _handRockMock = new RockUseCase();
+            _handRockMock = HandFactory.Create("Rock");
         }
 
         [Fact]
@@ -18,7 +19,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new PlayerUseCase("Luca", _handRockMock);
+                var player = PlayerFactory.Create("Luca", _handRockMock);
             };
 
             action.Should()
@@ -30,7 +31,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new PlayerUseCase(string.Empty, _handRockMock);
+                var player =  PlayerFactory.Create(string.Empty, _handRockMock);
             };
 
             action.Should()
@@ -42,7 +43,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new PlayerUseCase(string.Empty.PadLeft(10, ' '), _handRockMock);
+                var player =  PlayerFactory.Create(string.Empty.PadLeft(10, ' '), _handRockMock);
             };
 
             action.Should()
@@ -54,7 +55,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new PlayerUseCase("CJ", _handRockMock);
+                var player =  PlayerFactory.Create("CJ", _handRockMock);
             };
 
             action.Should()
@@ -66,7 +67,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new PlayerUseCase(string.Empty.PadLeft(101, 'A'), _handRockMock);
+                var player =  PlayerFactory.Create(string.Empty.PadLeft(101, 'A'), _handRockMock);
             };
 
             action.Should()

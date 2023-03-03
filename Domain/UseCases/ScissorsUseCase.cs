@@ -2,7 +2,7 @@
 
 namespace Domain.Implementations
 {
-    public sealed class ScissorsUseCase : IHand
+    internal sealed class ScissorsUseCase : IHand
     {
         public string Name { get; } = "Scissors";
 
