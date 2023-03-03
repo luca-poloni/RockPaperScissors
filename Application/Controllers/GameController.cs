@@ -7,7 +7,7 @@ namespace Application.Controllers
 {
     [ApiController]
     [Route("api/v1/game")]
-    public class GameController : ControllerBase
+    public sealed class GameController : ControllerBase
     {
         [HttpPost("play")]
         public IActionResult Play(PlayersAggregate players)
@@ -22,9 +22,9 @@ namespace Application.Controllers
                 var handOne = HandFactory.Create(playerAggregateOne.HandName);
                 var handTwo = HandFactory.Create(playerAggregateTwo.HandName);
 
-                var playerOne = new Player(playerAggregateOne.Name, handOne);
-                var playerTwo = new Player(playerAggregateTwo.Name, handTwo);
-                var winner = new Winner(playerOne, playerTwo);
+                var playerOne = new PlayerUseCase(playerAggregateOne.Name, handOne);
+                var playerTwo = new PlayerUseCase(playerAggregateTwo.Name, handTwo);
+                var winner = new WinnerUseCase(playerOne, playerTwo);
 
                 result = Ok(winner.GetWinner().ToString());
             }

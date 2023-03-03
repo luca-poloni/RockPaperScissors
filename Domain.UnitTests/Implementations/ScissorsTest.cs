@@ -3,14 +3,14 @@ using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
 {
-    public class ScissorsTest
+    public sealed class ScissorsTest
     {
         [Fact]
         public void WinsMethod_WithPaperHand_ShouldBeTrue()
         {
             #region Arrange
-            var scissors = new Scissors();
-            var paper = new Paper();
+            var scissors = new ScissorsUseCase();
+            var paper = new PaperUseCase();
             #endregion
 
             #region Act

@@ -2,7 +2,7 @@
 
 namespace Application.Aggregates
 {
-    public class PlayerAggregate
+    public sealed record PlayerAggregate
     {
         [Required(ErrorMessage = "Name is required.")]
         [MinLength(3, ErrorMessage = "Minimum Length for Name is 3 characters.")]

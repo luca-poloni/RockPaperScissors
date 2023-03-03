@@ -4,13 +4,13 @@ using FluentValidation;
 
 namespace Domain.UnitTests.Implementations
 {
-    public class PlayerTest
+    public sealed class PlayerTest
     {
-        private readonly Rock _handRockMock;
+        private readonly RockUseCase _handRockMock;
 
         public PlayerTest()
         {
-            _handRockMock = new Rock();
+            _handRockMock = new RockUseCase();
         }
 
         [Fact]
@@ -18,7 +18,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new Player("Luca", _handRockMock);
+                var player = new PlayerUseCase("Luca", _handRockMock);
             };
 
             action.Should()
@@ -30,7 +30,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new Player(string.Empty, _handRockMock);
+                var player = new PlayerUseCase(string.Empty, _handRockMock);
             };
 
             action.Should()
@@ -42,7 +42,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new Player(string.Empty.PadLeft(10, ' '), _handRockMock);
+                var player = new PlayerUseCase(string.Empty.PadLeft(10, ' '), _handRockMock);
             };
 
             action.Should()
@@ -54,7 +54,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new Player("CJ", _handRockMock);
+                var player = new PlayerUseCase("CJ", _handRockMock);
             };
 
             action.Should()
@@ -66,7 +66,7 @@ namespace Domain.UnitTests.Implementations
         {
             Action action = () =>
             {
-                var player = new Player(string.Empty.PadLeft(101, 'A'), _handRockMock);
+                var player = new PlayerUseCase(string.Empty.PadLeft(101, 'A'), _handRockMock);
             };
 
             action.Should()

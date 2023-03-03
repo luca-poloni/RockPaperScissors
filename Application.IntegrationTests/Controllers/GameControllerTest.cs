@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Application.IntegrationTests.Controllers
 {
-    public class GameControllerTest : IClassFixture<WebApplicationFactory<Program>>
+    public sealed class GameControllerTest : IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly HttpClient _httpClient;
 

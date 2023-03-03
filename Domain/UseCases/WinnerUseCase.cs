@@ -3,12 +3,12 @@ using Domain.Interfaces;
 
 namespace Domain.Implementations
 {
-    public record Winner : IWinner
+    public sealed class WinnerUseCase : IWinner
     {
         private readonly IPlayer _playerOne;
         private readonly IPlayer _playerTwo;
 
-        public Winner(IPlayer playerOne, IPlayer playerTwo)
+        public WinnerUseCase(IPlayer playerOne, IPlayer playerTwo)
         {
             _playerOne = playerOne;
             _playerTwo = playerTwo;

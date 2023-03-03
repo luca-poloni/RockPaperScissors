@@ -5,7 +5,7 @@ using FluentAssertions;
 
 namespace Domain.UnitTests.Factories
 {
-    public class HandFactoryTest
+    public sealed class HandFactoryTest
     {
         [Fact]
         public void CreateRockHand_WithValidName_ShouldAsRock()
@@ -15,7 +15,7 @@ namespace Domain.UnitTests.Factories
             #endregion
 
             #region Assert
-            hand.Should().As<Rock>();
+            hand.Should().As<RockUseCase>();
             #endregion
         }
 
@@ -27,7 +27,7 @@ namespace Domain.UnitTests.Factories
             #endregion
 
             #region Assert
-            hand.Should().As<Paper>();
+            hand.Should().As<PaperUseCase>();
             #endregion
         }
 
@@ -39,7 +39,7 @@ namespace Domain.UnitTests.Factories
             #endregion
 
             #region Assert
-            hand.Should().As<Scissors>();
+            hand.Should().As<ScissorsUseCase>();
             #endregion
         }
 

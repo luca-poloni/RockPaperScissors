@@ -2,7 +2,7 @@
 
 namespace Application.Aggregates
 {
-    public record PlayersAggregate
+    public sealed record PlayersAggregate
     {
         [Required(ErrorMessage = "PlayerOne is required.")]
         public PlayerAggregate PlayerOne { get; }

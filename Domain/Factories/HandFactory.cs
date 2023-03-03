@@ -11,11 +11,11 @@ namespace Domain.Factories
             switch (name.ToUpper())
             {
                 case "ROCK":
-                    return new Rock();
+                    return new RockUseCase();
                 case "PAPER":
-                    return new Paper();
+                    return new PaperUseCase();
                 case "SCISSORS":
-                    return new Scissors();
+                    return new ScissorsUseCase();
                 default:
                     throw new InvalidHandException();
             }
