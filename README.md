@@ -14,7 +14,12 @@
 
 <p align="justify">
 O RockPaperScissors é uma API que simula o clássico jogo de mão "Pedra Papel Tesoura". A API permite que seja feita uma simulação de uma disputa entre dois jogadores, retornando o jogador vencedor.
-  
+</p>
+
+<p align="justify">
+No projeto foram utilizadas técnicas de desenvolvimento como o Clean Code, SOLID, conceitos do DDD e TDD com testes de unidade e testes de integração. 
+</p>
+
 ###
   
 ## Ferramentas utilizadas
