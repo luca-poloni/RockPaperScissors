@@ -3,7 +3,7 @@ using Domain.Interfaces;
 
 namespace Domain.Implementations
 {
-    public sealed class WinnerUseCase : IWinner
+    internal sealed class WinnerUseCase : IWinner
     {
         private readonly IPlayer _playerOne;
         private readonly IPlayer _playerTwo;

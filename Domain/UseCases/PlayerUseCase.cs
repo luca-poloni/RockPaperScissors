@@ -3,7 +3,7 @@ using Domain.Interfaces;
 
 namespace Domain.Implementations
 {
-    public sealed class PlayerUseCase : IPlayer
+    internal sealed class PlayerUseCase : IPlayer
     {
         public string Name { get; }
         public IHand Hand { get; }

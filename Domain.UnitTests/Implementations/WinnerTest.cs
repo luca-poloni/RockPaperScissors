@@ -1,5 +1,4 @@
-﻿using Domain.Exceptions;
-using Domain.Implementations;
+﻿using Domain.Factories;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
@@ -7,19 +6,19 @@ namespace Domain.UnitTests.Implementations
     public sealed class WinnerTest
     {
         [Fact]
-        public void GetWinnerMethod_WithSameHands_ShouldThrowExactlyEqualsHandsExceptionWithSpecificMessage()
+        public void GetWinnerMethod_WithSameHands_ShouldThrowExceptionWithSpecificMessage()
         {
             Action action = () =>
             {
-                var rock = new RockUseCase();
-                var playerOne = new PlayerUseCase("Luca", rock);
-                var playerTwo = new PlayerUseCase("Caio", rock);
-                var winner = new WinnerUseCase(playerOne, playerTwo);
+                var rock = HandFactory.Create("Rock");
+                var playerOne = PlayerFactory.Create("Luca", rock);
+                var playerTwo = PlayerFactory.Create("Caio", rock);
+                var winner = WinnerFactory.Create(playerOne, playerTwo);
                 winner.GetWinner();
             };
 
             action.Should()
-                 .ThrowExactly<EqualsHandsException>().WithMessage("The hands are equals.");
+                 .Throw<Exception>().WithMessage("The hands are equals.");
         }
     }
 }

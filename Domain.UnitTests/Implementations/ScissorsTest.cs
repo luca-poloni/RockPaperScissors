@@ -1,4 +1,5 @@
-﻿using Domain.Implementations;
+﻿using Domain.Factories;
+using Domain.Implementations;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
@@ -9,8 +10,8 @@ namespace Domain.UnitTests.Implementations
         public void WinsMethod_WithPaperHand_ShouldBeTrue()
         {
             #region Arrange
-            var scissors = new ScissorsUseCase();
-            var paper = new PaperUseCase();
+            var scissors = HandFactory.Create("Scissors");
+            var paper = HandFactory.Create("Paper");
             #endregion
 
             #region Act

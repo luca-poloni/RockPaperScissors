@@ -1,4 +1,4 @@
-﻿using Domain.Implementations;
+﻿using Domain.Factories;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
@@ -9,8 +9,8 @@ namespace Domain.UnitTests.Implementations
         public void WinsMethod_WithScissorsHand_ShouldBeTrue()
         {
             #region Arrange
-            var rock = new RockUseCase();
-            var scissors = new ScissorsUseCase();
+            var rock = HandFactory.Create("Rock");
+            var scissors = HandFactory.Create("Scissors");
             #endregion
 
             #region Act
@@ -18,7 +18,7 @@ namespace Domain.UnitTests.Implementations
             #endregion
 
             #region Assert
-            wins.Should().BeTrue(); 
+            wins.Should().BeTrue();
             #endregion
         }
     }

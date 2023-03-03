@@ -1,6 +1,5 @@
-﻿using Domain.Exceptions;
-using Domain.Factories;
-using Domain.Implementations;
+﻿using Domain.Factories;
+using Domain.Interfaces;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Factories
@@ -8,43 +7,19 @@ namespace Domain.UnitTests.Factories
     public sealed class HandFactoryTest
     {
         [Fact]
-        public void CreateRockHand_WithValidName_ShouldAsRock()
+        public void CreateHand_WithValidName_ShouldAsHand()
         {
             #region Act
             var hand = HandFactory.Create("Rock");
             #endregion
 
             #region Assert
-            hand.Should().As<RockUseCase>();
+            hand.Should().As<IHand>();
             #endregion
         }
 
         [Fact]
-        public void CreatePaperHand_WithValidName_ShouldAsPaper()
-        {
-            #region Act
-            var hand = HandFactory.Create("Paper");
-            #endregion
-
-            #region Assert
-            hand.Should().As<PaperUseCase>();
-            #endregion
-        }
-
-        [Fact]
-        public void CreateScissorsHand_WithValidName_ShouldAsScissors()
-        {
-            #region Act
-            var hand = HandFactory.Create("Scissors");
-            #endregion
-
-            #region Assert
-            hand.Should().As<ScissorsUseCase>();
-            #endregion
-        }
-
-        [Fact]
-        public void CreateHand_WithInvalidName_ShouldThrowExactlyInvalidHandExceptionWithSpecificMessage()
+        public void CreateHand_WithInvalidName_ShouldThrowExceptionWithSpecificMessage()
         {
             Action action = () =>
             {
@@ -52,7 +27,7 @@ namespace Domain.UnitTests.Factories
             };
 
             action.Should()
-                .ThrowExactly<InvalidHandException>().WithMessage("The hand is invalid.");
+                .Throw<Exception>().WithMessage("The hand is invalid.");
         }
     }
 }

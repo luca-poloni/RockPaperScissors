@@ -1,4 +1,4 @@
-﻿using Domain.Implementations;
+﻿using Domain.Factories;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
@@ -9,8 +9,8 @@ namespace Domain.UnitTests.Implementations
         public void WinsMethod_WithRockHand_ShouldBeTrue()
         {
             #region Arrange
-            var paper = new PaperUseCase();
-            var rock = new RockUseCase();
+            var paper = HandFactory.Create("Paper");
+            var rock = HandFactory.Create("Rock");
             #endregion
 
             #region Act
