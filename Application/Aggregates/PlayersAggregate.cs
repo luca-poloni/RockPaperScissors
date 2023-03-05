@@ -1,16 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Application.ValueObjects;
 
 namespace Application.Aggregates
 {
     public sealed record PlayersAggregate
     {
-        [Required(ErrorMessage = "PlayerOne is required.")]
-        public PlayerAggregate PlayerOne { get; }
+        public PlayerVO PlayerOne { get; }
+        public PlayerVO PlayerTwo { get; }
 
-        [Required(ErrorMessage = "PlayerTwo is required.")]
-        public PlayerAggregate PlayerTwo { get; }
-
-        public PlayersAggregate(PlayerAggregate playerOne, PlayerAggregate playerTwo)
+        public PlayersAggregate(PlayerVO playerOne, PlayerVO playerTwo)
         {
             PlayerOne = playerOne;
             PlayerTwo = playerTwo;
