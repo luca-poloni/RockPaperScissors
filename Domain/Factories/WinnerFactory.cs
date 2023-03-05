@@ -1,4 +1,4 @@
-﻿using Domain.Implementations;
+﻿using Domain.UseCases;
 using Domain.Interfaces;
 
 namespace Domain.Factories

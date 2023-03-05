@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Domain.Interfaces;
 
-namespace Domain.Implementations
+namespace Domain.UseCases
 {
     internal sealed class PlayerUseCase : IPlayer
     {

@@ -1,6 +1,6 @@
 ﻿using Domain.Exceptions;
 using Domain.Interfaces;
-using Domain.Implementations;
+using Domain.UseCases;
 
 namespace Domain.Factories
 {

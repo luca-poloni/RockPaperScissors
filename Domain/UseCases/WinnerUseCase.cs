@@ -1,7 +1,7 @@
 ﻿using Domain.Exceptions;
 using Domain.Interfaces;
 
-namespace Domain.Implementations
+namespace Domain.UseCases
 {
     internal sealed class WinnerUseCase : IWinner
     {
