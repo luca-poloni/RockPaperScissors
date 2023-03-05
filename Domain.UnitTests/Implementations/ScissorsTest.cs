@@ -1,5 +1,4 @@
 ﻿using Domain.Factories;
-using Domain.Implementations;
 using FluentAssertions;
 
 namespace Domain.UnitTests.Implementations
