@@ -1,4 +1,4 @@
-using Application.Aggregates;
+using Application.Models;
 using Application.Handles;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ namespace Application.Controllers
     public sealed class GameController : ControllerBase
     {
         [HttpPost("play")]
-        public ActionResult<IPlayer> Play(PlayersAggregate players)
+        public ActionResult<IPlayer> Play(PlayersModel players)
         {
             var gameHandle = new GameHandle(players);
             return gameHandle.Handle();

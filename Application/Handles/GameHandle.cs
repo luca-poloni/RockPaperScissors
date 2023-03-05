@@ -1,4 +1,4 @@
-﻿using Application.Aggregates;
+﻿using Application.Models;
 using Domain.Factories;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +7,9 @@ namespace Application.Handles
 {
     public class GameHandle
     {
-        private readonly PlayersAggregate _players;
+        private readonly PlayersModel _players;
 
-        public GameHandle(PlayersAggregate players)
+        public GameHandle(PlayersModel players)
         {
             _players = players;
         }

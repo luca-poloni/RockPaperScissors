@@ -1,5 +1,4 @@
-﻿using Application.Aggregates;
-using Application.ValueObjects;
+﻿using Application.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
@@ -21,9 +20,9 @@ namespace Application.IntegrationTests.Controllers
         public async Task PlayPost_WithValidPlayers_ShouldBeStatusCodeOK()
         {
             #region Arrange
-            var playerOne = new PlayerVO("Luca", "Rock");
-            var playerTwo = new PlayerVO("Caio", "Paper");
-            var players = new PlayersAggregate(playerOne, playerTwo);
+            var playerOne = new PlayerModel("Luca", "Rock");
+            var playerTwo = new PlayerModel("Caio", "Paper");
+            var players = new PlayersModel(playerOne, playerTwo);
             var json = JsonSerializer.Serialize(players);
             var request = CreateRequest(json);
             #endregion
@@ -41,9 +40,9 @@ namespace Application.IntegrationTests.Controllers
         public async Task PlayPost_WithInvalidPlayersPropertys_ShouldBeStatusCodeBadRequest()
         {
             #region Arrange
-            var invalidPlayerOne = new PlayerVO(string.Empty, string.Empty);
-            var invalidPlayerTwo = new PlayerVO(string.Empty, string.Empty);
-            var players = new PlayersAggregate(invalidPlayerOne, invalidPlayerTwo);
+            var invalidPlayerOne = new PlayerModel(string.Empty, string.Empty);
+            var invalidPlayerTwo = new PlayerModel(string.Empty, string.Empty);
+            var players = new PlayersModel(invalidPlayerOne, invalidPlayerTwo);
             var json = JsonSerializer.Serialize(players);
             var request = CreateRequest(json);
             #endregion

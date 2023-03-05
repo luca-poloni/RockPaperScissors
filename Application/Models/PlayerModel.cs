@@ -1,11 +1,11 @@
-﻿namespace Application.ValueObjects
+﻿namespace Application.Models
 {
-    public sealed record PlayerVO
+    public sealed record PlayerModel
     {
         public string Name { get; }
         public string HandName { get; }
 
-        public PlayerVO(string name, string handName)
+        public PlayerModel(string name, string handName)
         {
             Name = name;
             HandName = handName;
